@@ -1,17 +1,34 @@
 <template>
-  <div class="toolbar">
-    <div class="title">vue-sort</div>
-    <div>numbers: {{ numbers.length }}</div>
+  <div class="controller">
+    <div>{{ value }}</div>
     <button @click="sort">sort</button>
+    <vue-slider
+      @change="changeHandle"
+      :width="1024"
+      :min="4"
+      :max="64"
+      :interval="1"
+      v-model="value"
+    />
   </div>
 </template>
 
 <script>
+import VueSlider from "vue-slider-component";
+import "vue-slider-component/theme/antd.css";
 import store from "../store/store";
 import { mapState } from "vuex";
 
 export default {
-  name: "Toolbar",
+  name: "Controller",
+  components: {
+    VueSlider,
+  },
+  data() {
+    return {
+      value: 4,
+    };
+  },
   computed: {
     ...mapState(["numbers"]),
   },
@@ -23,8 +40,8 @@ export default {
     bubbleSort(arr) {
       let len = arr.length;
       for (let i = 0; i < len; i++) {
-        for (let j = 0; j < len; j++) {
-          if (arr[j] > arr[j + 1]) {
+        for (let j = 0; j < len - 1; j++) {
+          if (arr[j].value > arr[j + 1].value) {
             let tmp = arr[j];
             arr[j] = arr[j + 1];
             arr[j + 1] = tmp;
@@ -36,19 +53,16 @@ export default {
     update_numbers(new_array) {
       store.commit("SET_NUMBERS", new_array);
     },
+    changeHandle(event) {
+      store.commit("GENERATE_NUMBERS", event);
+    },
   },
 };
 </script>
 
 <style scoped>
-.toolbar {
-  width: 1024px;
-  margin: 0 auto;
-  display: flex;
+.controller {
   margin-bottom: 10px;
-}
-.title {
-  font-size: 20px;
-  margin-right: 10px;
+  margin: auto;
 }
 </style>

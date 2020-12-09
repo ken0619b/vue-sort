@@ -1,19 +1,22 @@
 <template>
   <div id="app">
-    <Toolbar />
+    <Header />
+    <Controller />
     <Board />
   </div>
 </template>
 
 <script>
-import Toolbar from "./components/Toolbar";
+import Header from "./components/Header";
+import Controller from "./components/Controller";
 import Board from "./components/Board";
 
 export default {
   name: "App",
   components: {
     Board,
-    Toolbar,
+    Header,
+    Controller,
   },
 
   data() {

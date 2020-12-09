@@ -3,9 +3,9 @@
     <main class="bodyContainer">
       <div
         v-for="number in numbers"
-        v-bind:style="{ height: number.value * 30 + 'px' }"
+        v-bind:style="{ height: number.value * 15 + 'px' }"
         :key="number.id"
-        class="arrayElement"
+        :class='[number.status.includes("finish") > 0 ? "arrayElement finish" : "arrayElement"]'
       >
         {{ number.value }}
       </div>
@@ -48,5 +48,9 @@ export default {
   font-weight: 700;
   color: white;
   display: inline-block;
+}
+
+.finish {
+  background-color: rgba(168, 244, 121, 0.8);
 }
 </style>
