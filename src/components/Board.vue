@@ -5,7 +5,7 @@
         v-for="number in numbers"
         v-bind:style="{ height: number.value * 15 + 'px' }"
         :key="number.id"
-        :class='[number.status.includes("finish") > 0 ? "arrayElement finish" : "arrayElement"]'
+        class="arrayElement"
       >
         {{ number.value }}
       </div>
@@ -37,12 +37,12 @@ export default {
 }
 
 .arrayElement {
-  width: 20px;
+  width: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 5px;
   color: transparent;
-  background-color: rgba(66, 134, 244, 0.8);
+  background-color: rgba(56, 170, 211, 0.8);
   font-size: 12px;
   font-family: sans-serif;
   font-weight: 700;
