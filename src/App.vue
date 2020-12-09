@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <Board />
+    <Board :items="items" />
   </div>
 </template>
 
@@ -13,7 +13,13 @@ export default {
   name: "App",
   components: {
     Header,
-    Board
+    Board,
+  },
+
+  data() {
+    return {
+      items: [1, 2, 5, 3, 2, 6, 8, 10, 321, 352, 462, 214, 64],
+    };
   },
 };
 </script>
