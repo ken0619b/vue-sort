@@ -1,49 +1,52 @@
 <template>
-  <main class="board">
-    <p>main</p>
-    <p>numbers: {{ numbers }}</p>
-    <button @click="sort">sort</button>
-  </main>
+  <div>
+    <main class="bodyContainer">
+      <div
+        v-for="number in numbers"
+        v-bind:style="{ height: number.value * 30 + 'px' }"
+        :key="number.id"
+        class="arrayElement"
+      >
+        {{ number.value }}
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
-import store from "../store/store";
-
 import { mapState } from "vuex";
 
 export default {
   name: "Board",
   computed: {
-    ...mapState([
-      "numbers",
-    ]),
+    ...mapState(["numbers"]),
   },
   data() {
     return {};
   },
-  methods: {
-    sort() {
-      let result = this.bubbleSort(this.numbers);
-      this.update_numbers(result);
-    },
-    bubbleSort(arr) {
-      let len = arr.length;
-      for (let i = 0; i < len; i++) {
-        for (let j = 0; j < len; j++) {
-          if (arr[j] > arr[j + 1]) {
-            let tmp = arr[j];
-            arr[j] = arr[j + 1];
-            arr[j + 1] = tmp;
-          }
-        }
-      }
-      return arr;
-    },
-    update_numbers(new_array) {
-      store.commit("SET_NUMBERS", new_array);
-    },
-  },
+  methods: {},
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.bodyContainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(230, 230, 230);
+  text-align: center;
+}
+
+.arrayElement {
+  width: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  color: transparent;
+  background-color: rgba(66, 134, 244, 0.8);
+  font-size: 12px;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: white;
+  display: inline-block;
+}
+</style>

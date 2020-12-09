@@ -1,25 +1,23 @@
 <template>
   <div id="app">
-    <Header />
+    <Toolbar />
     <Board />
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
+import Toolbar from "./components/Toolbar";
 import Board from "./components/Board";
 
 export default {
   name: "App",
   components: {
-    Header,
     Board,
+    Toolbar,
   },
 
   data() {
-    return {
-      
-    };
+    return {};
   },
 };
 </script>
@@ -31,6 +29,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 10px;
 }
 </style>
