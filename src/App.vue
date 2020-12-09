@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header />
-    <Board :items="items" />
+    <Board />
   </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
 
   data() {
     return {
-      items: [1, 2, 5, 3, 2, 6, 8, 10, 321, 352, 462, 214, 64],
+      
     };
   },
 };

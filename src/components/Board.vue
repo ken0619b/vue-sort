@@ -1,26 +1,32 @@
 <template>
   <main class="board">
     <p>main</p>
-    <p>items: {{ items }}</p>
+    <p>numbers: {{ numbers }}</p>
     <button @click="sort">sort</button>
   </main>
 </template>
 
 <script>
+import store from "../store/store";
+
+import { mapState } from "vuex";
+
 export default {
   name: "Board",
-  props: {
-    items: Array,
+  computed: {
+    ...mapState([
+      "numbers",
+    ]),
+  },
+  data() {
+    return {};
   },
   methods: {
     sort() {
-      alert("sorted");
-      alert(this.items);
-      let result = this.bubbleSort(this.items);
-      alert(result);
+      let result = this.bubbleSort(this.numbers);
+      this.update_numbers(result);
     },
     bubbleSort(arr) {
-    console.log('sorting...');
       let len = arr.length;
       for (let i = 0; i < len; i++) {
         for (let j = 0; j < len; j++) {
@@ -32,6 +38,9 @@ export default {
         }
       }
       return arr;
+    },
+    update_numbers(new_array) {
+      store.commit("SET_NUMBERS", new_array);
     },
   },
 };
