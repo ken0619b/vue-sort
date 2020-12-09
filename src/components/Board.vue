@@ -42,7 +42,7 @@ export default {
   margin-bottom: 10px;
   margin-left: 5px;
   color: transparent;
-  background-color: rgba(56, 170, 211, 0.8);
+  background-color: rgba(35, 189, 245, 0.8);
   font-size: 12px;
   font-family: sans-serif;
   font-weight: 700;

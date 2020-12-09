@@ -56,6 +56,7 @@ export default {
 
         switch (process_item.action) {
           case "comparison": {
+
             let comparing_ids = [
               process_item.value1.id,
               process_item.value2.id,
@@ -107,7 +108,7 @@ export default {
         if (procedures_copy.length == 0) {
           clearInterval(this.loopObj);
         }
-      }, 10);
+      }, 30);
     },
     bubbleSort(arr) {
       let len = arr.length;
