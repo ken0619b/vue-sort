@@ -3,9 +3,10 @@
     <main class="bodyContainer">
       <div
         v-for="number in numbers"
-        v-bind:style="{ height: number.value * 15 + 'px' }"
+        v-bind:style="{ width: 1024 / numbers.length + 'px', height: number.value * 15 + 'px' }"
         :key="number.id"
         class="arrayElement"
+
       >
         {{ number.value }}
       </div>
@@ -37,7 +38,6 @@ export default {
 }
 
 .arrayElement {
-  width: 8px;
   margin-top: 10px;
   margin-bottom: 10px;
   margin-left: 5px;
@@ -50,7 +50,4 @@ export default {
   display: inline-block;
 }
 
-.finish {
-  background-color: rgba(168, 244, 121, 0.8);
-}
 </style>

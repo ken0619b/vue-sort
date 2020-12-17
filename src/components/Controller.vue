@@ -1,7 +1,7 @@
 <template>
   <div class="controller">
-    <div>{{ value }}</div>
-    <button @click="sort">sort</button>
+    <div>numbers: {{ value }}</div>
+    <button @click="sort">run Bubble Sort</button>
     <vue-slider
       @change="changeHandle"
       :width="1600"
@@ -40,6 +40,19 @@ export default {
   },
   computed: {
     ...mapState(["numbers"]),
+    speed() {
+      let speed = 0;
+      if (this.value <= 16) {
+        speed = 100;
+      } else if (this.value <= 32) {
+        speed = 50;
+      } else if (this.value <= 64) {
+        speed = 20;
+      } else{
+        speed = 10;
+      }
+      return speed;
+    },
   },
   methods: {
     sort() {
@@ -56,7 +69,6 @@ export default {
 
         switch (process_item.action) {
           case "comparison": {
-
             let comparing_ids = [
               process_item.value1.id,
               process_item.value2.id,
@@ -100,6 +112,7 @@ export default {
         }
         // 変更を反映
         this.update_numbers(processing_array);
+        // debug:
         // console.log(processing_array.map((item) => `${item.id}-${item.value}-${item.status}`))
 
         // 終了チェック
@@ -108,13 +121,14 @@ export default {
         if (procedures_copy.length == 0) {
           clearInterval(this.loopObj);
         }
-      }, 30);
+      }, this.speed);
     },
     bubbleSort(arr) {
       let len = arr.length;
       for (let i = 0; i < len; i++) {
         for (let j = 0; j < len - 1; j++) {
           if (arr[j].value > arr[j + 1].value) {
+            // 比較した要素情報を格納
             this.procedures.push({
               action: "comparison",
               value1: arr[j],
@@ -124,7 +138,7 @@ export default {
             arr[j] = arr[j + 1];
             arr[j + 1] = tmp;
 
-            // 未スワップの配列を格納
+            // スワップする要素情報を格納
             this.procedures.push({
               action: "swapping",
               value1: arr[j + 1],
@@ -147,7 +161,6 @@ export default {
 
 <style scoped>
 .controller {
-  margin-bottom: 10px;
   margin: auto;
 }
 </style>
