@@ -1,5 +1,5 @@
 # vue-sort
-
+Training for [Vue](https://vuejs.org/) with [vuex](https://vuex.vuejs.org/) library
 ## Project setup
 ```
 yarn install
@@ -22,3 +22,5 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+Thank you!
