@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="title">vue-sort</div>
+    <div class="title">vue-bubble-sort</div>
   </div>
 </template>
 

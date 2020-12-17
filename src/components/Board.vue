@@ -6,7 +6,6 @@
         v-bind:style="{ width: 1024 / numbers.length + 'px', height: number.value * 15 + 'px' }"
         :key="number.id"
         class="arrayElement"
-
       >
         {{ number.value }}
       </div>

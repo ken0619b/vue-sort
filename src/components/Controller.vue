@@ -48,7 +48,7 @@ export default {
         speed = 50;
       } else if (this.value <= 64) {
         speed = 20;
-      } else{
+      } else {
         speed = 10;
       }
       return speed;
